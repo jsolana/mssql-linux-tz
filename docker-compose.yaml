@@ -1,0 +1,20 @@
+version: "2.2"
+
+services:
+  sqlserver:
+    #image: microsoft/mssql-server-linux:2017-CU13
+    build: .
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Password.
+      #- TZ=Europe/Lisbon
+    ports:
+      - 51433:1433
+    networks:
+      - integration
+    volumes:
+      - sql-server-volume:/var/opt/mssql    
+networks:
+  integration:
+volumes:
+  sql-server-volume:
